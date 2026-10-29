@@ -47,11 +47,16 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
+      - name: Make room on the ephemeral runner
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet
+          df -h .
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           auto-config: "false"
           build: "true"
           use-mathlib-cache: "true"
+          use-github-cache: "false"
       - name: Inspect the theorem and its axioms
         run: lake env lean verification/Audit.lean
       - name: Install bubblewrap for Palomar's sandbox
