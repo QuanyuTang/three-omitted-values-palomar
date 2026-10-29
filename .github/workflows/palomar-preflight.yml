@@ -1,0 +1,50 @@
+name: Palomar full mechanical preflight
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Full source commit to check
+        required: true
+        type: string
+        default: "1a6a4e27d5d6589a061dae64c44391e993cad5f8"
+      authorization_relationship:
+        description: Choose your truthful relationship to the formalization
+        required: true
+        type: choice
+        options:
+          - I am a responsible author or maintainer
+          - I have approval from a responsible author or maintainer
+
+permissions:
+  contents: read
+
+jobs:
+  require-public-source:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check public-source prerequisite and immutable commit
+        env:
+          REPOSITORY_IS_PRIVATE: ${{ github.event.repository.private }}
+          SOURCE_COMMIT: ${{ inputs.source_commit }}
+        run: |
+          if [[ "$REPOSITORY_IS_PRIVATE" != "false" ]]; then
+            echo "::error::Palomar's full preflight fetches public source. Keep this workflow pending until the owner chooses to make the repository public."
+            exit 1
+          fi
+          if [[ ! "$SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::source_commit must be a full lowercase 40-character commit SHA."
+            exit 1
+          fi
+
+  palomar-preflight:
+    needs: require-public-source
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ inputs.source_commit }}
+      pipeline_commit: 14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+      request_id: preflight001
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ format('{{"comparator_config_path":"comparator.json","authorization_relationship":{0}}}', toJSON(inputs.authorization_relationship)) }}
