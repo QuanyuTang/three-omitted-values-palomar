@@ -49,4 +49,10 @@ The main construction and its dependencies are organized as follows.
 
 `Theorem12Proof/Theorem12Research.lean` assembles these steps without
 additional hypotheses. `Solution.lean` exports the compared declaration.
+`Theorem12Proof/SemanticCorrespondence.lean` additionally proves explicit
+sphere-fibre, multiplicity, summability and bounded-type correspondence lemmas.
+Its bounded-type equivalence is applied only where the function is holomorphic;
+the main theorem already proves the absence of non-real poles, so this imposes
+no new hypothesis on the result. The module is compiled through `Solution` and
+all its theorem axiom closures are checked in CI.
 See `THIRD_PARTY.md` for the prior developments used in the proof.

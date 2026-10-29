@@ -58,7 +58,10 @@ jobs:
           use-mathlib-cache: "true"
           use-github-cache: "false"
       - name: Inspect the theorem and its axioms
-        run: lake env lean verification/Audit.lean
+        run: |
+          set -euo pipefail
+          lake env lean verification/Audit.lean | tee "$RUNNER_TEMP/axiom-audit.log"
+          python3 scripts/check-axiom-audit.py "$RUNNER_TEMP/axiom-audit.log"
       - name: Install bubblewrap for Palomar's sandbox
         run: |
           sudo apt-get update -qq >/dev/null

@@ -16,16 +16,18 @@ every other value, the point divisor in each open half-plane fails the
 Blaschke condition, with multiplicities counted. The function is not of
 bounded type in either half-plane. The theorem is unconditional.
 
-**Verified proof snapshot:**
+**Historical verification evidence:**
 [`1a6a4e27d5d6589a061dae64c44391e993cad5f8`](https://github.com/QuanyuTang/three-omitted-values-palomar/tree/1a6a4e27d5d6589a061dae64c44391e993cad5f8)
 passed both the [repository checks](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/runs/40799377846)
 and the [official full Palomar mechanical preflight](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/runs/40811878877).
 The [recorded mechanical report](verification/mechanical-report-20261028.json)
-has `status: pass`, with Lean, NanoDa, and con-ron accepting the proof and no
-errors or warnings. Later workflow and documentation commits do not change
-that fixed proof snapshot. Badges show the latest workflow results; submit
-the exact checked commit. Mechanical preflight is separate from Palomar
-submission, editorial review, and registration.
+has `status: pass`, with Lean, NanoDa, and con-ron accepting the proof. Its
+top-level `errors` and `warnings` lists are empty; the Lean build logs
+contain routine linter and deprecation warnings. This historical report
+predates the explicit semantic correspondence module added in the current
+sources. For submission, require both workflows to pass for the exact new
+40-character commit SHA; a badge or a report for another commit is insufficient.
+Mechanical preflight is separate from submission, editorial review, and registration.
 
 ## Statement and proof
 
@@ -35,6 +37,11 @@ completed proof in [`Theorem12Proof/`](Theorem12Proof/).
 [`comparator.json`](comparator.json) compares the theorem and its transitive
 statement definitions and permits only the three standard Lean axioms.
 
+**The single `sorry` in `Challenge.lean` is a deliberate statement placeholder.**
+`Solution.lean` does not import `Challenge.lean`; the proved solution and its
+dependencies contain no `sorry`. The metadata's zero placeholder count describes
+the completed proof, excluding that statement-only placeholder.
+
 Mathlib represents a meromorphic function in normal form by a complex-valued
 function that takes the default value zero at a pole. Consequently the finite
 value fibres require analyticity at the point, while the pole fibre consists
@@ -43,6 +50,21 @@ divisor of `F - a`. Summability is over the complex plane with terms outside
 the relevant half-plane equal to zero. Since the only excluded points on the
 Riemann sphere are `0`, `1`, and `∞`, every remaining value is represented by
 a complex number `a ≠ 0, 1`.
+
+[`SemanticCorrespondence.lean`](Theorem12Proof/SemanticCorrespondence.lean)
+proves the corresponding finite and infinite `OnePoint ℂ` fibre identities,
+the equivalence of the remaining-value quantifiers, equality with analytic
+zero multiplicities, and equivalence of the zero-padded and actual-fibre sums.
+It also proves `bounded_type_upper_agrees` and `bounded_type_lower_agrees`:
+on these pole-free half-planes the predicates agree with quotients of bounded
+holomorphic functions. Holomorphy there follows from the theorem's existing
+real-pole conclusion. `source_form_with_semantic_bridges` combines these facts
+in an unconditional restatement. This is a representation and terminology
+bridge, rather than a separate manifold formalization of the Riemann sphere.
+
+CI compiles this module as a dependency of `Solution` and checks the permitted
+axioms of every bridge theorem. The review remains self-assessed; external AI
+feedback and kernel verification are not independent human expert review.
 
 The proof constructs a controlled Farey boundary and a normalized conformal
 map, obtains the global meromorphic function by reflection, and derives the
@@ -59,7 +81,8 @@ Install the version in [`lean-toolchain`](lean-toolchain), then run:
 ```sh
 lake exe cache get
 lake build
-lake env lean verification/Audit.lean
+lake env lean verification/Audit.lean > axiom-audit.log
+python3 scripts/check-axiom-audit.py axiom-audit.log
 python3 scripts/check-lean-sources.py
 python3 scripts/check-proof-trust.py
 ```
@@ -71,8 +94,7 @@ kernel checks:
 ./scripts/verify-comparator.sh
 ```
 
-The `sorry` in `Challenge.lean` is the deliberate statement placeholder;
-the solution and its proof dependencies contain no `sorry`. See
+See
 [`formalization.yaml`](formalization.yaml) for scope, source, automation, and
 review metadata and [`THIRD_PARTY.md`](THIRD_PARTY.md) for source attribution.
 

@@ -1,6 +1,6 @@
 module
 
-public import Theorem12Proof.Theorem12Research
+public import Theorem12Proof.SemanticCorrespondence
 
 @[expose] public section
 

@@ -7,7 +7,6 @@ on:
         description: Full source commit to check
         required: true
         type: string
-        default: "1a6a4e27d5d6589a061dae64c44391e993cad5f8"
       authorization_relationship:
         description: Choose your truthful relationship to the formalization
         required: true

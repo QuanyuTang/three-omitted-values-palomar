@@ -1,0 +1,40 @@
+Response to external GPT feedback before Palomar submission
+
+The supplied review identified no counterexample or missing clause in the main
+theorem. Its recommendations led to the following concrete changes.
+
+1. Sphere fibres and multiplicities
+   Theorem12Proof/SemanticCorrespondence.lean now proves sphere_finite_fiber,
+   sphere_pole_fiber, exceptional_values_iff and remaining_sphere_values.
+   Meromorphic normal form and the existing pole/order characterization give
+   these fibre identities their meromorphic interpretation. The same module
+   proves equality with analytic zero multiplicities, rules out infinite-order
+   degeneration using the already-proved distinct fibres, and identifies the
+   zero-padded sums with sums on the actual fibres. This is an explicit
+   representation bridge, not a new manifold theory of the Riemann sphere.
+
+2. Bounded type
+   bounded_type_upper_agrees and bounded_type_lower_agrees identify the
+   repository predicates with bounded holomorphic quotients on these open
+   half-planes. The required holomorphy follows from the original conclusion
+   that all poles are real. The full source_form_with_semantic_bridges theorem
+   discharges these conditions and restates the original result without
+   additional hypotheses. No equivalence on regions containing poles is claimed.
+
+3. Review status
+   formalization.yaml retains self-assessed status and an empty human-reviewer
+   list. AI feedback and kernel verification are not human expert peer review.
+
+4. Warnings and the Challenge placeholder
+   README now distinguishes an official report's empty diagnostic arrays from
+   the non-fatal Lean linter/deprecation warnings in the build logs. It explains
+   prominently that Challenge's single deliberate placeholder is excluded from
+   the completed proof's zero-placeholder count and is not imported by Solution.
+
+5. Fixed version and reproducible checks
+   The semantic module is compiled as a dependency of Solution. The CI axiom
+   audit checks main_result and every semantic theorem, rejecting missing audit
+   output or any nonstandard axiom. A full Palomar preflight must be dispatched
+   with an explicit new source SHA; the old default snapshot has been removed.
+   Historical reports are preserved with their original source-commit binding.
+   Use the new candidate's successful checks and exact full SHA for submission.

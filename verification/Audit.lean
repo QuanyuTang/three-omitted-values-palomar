@@ -4,3 +4,20 @@ import Solution
 
 #check PalomarTheorem12.main_result
 #print axioms PalomarTheorem12.main_result
+
+-- Check every theorem in the semantic correspondence module.
+#print axioms ThreeOmittedValues.SemanticCorrespondence.sphere_finite_fiber
+#print axioms ThreeOmittedValues.SemanticCorrespondence.sphere_pole_fiber
+#print axioms ThreeOmittedValues.SemanticCorrespondence.exceptional_values_iff
+#print axioms ThreeOmittedValues.SemanticCorrespondence.remaining_sphere_values
+#print axioms ThreeOmittedValues.SemanticCorrespondence.multiplicity_positive_iff
+#print axioms ThreeOmittedValues.SemanticCorrespondence.multiplicity_equals_analytic_zero_order
+#print axioms ThreeOmittedValues.SemanticCorrespondence.distinct_fibres_exclude_infinite_order
+#print axioms ThreeOmittedValues.SemanticCorrespondence.summable_on_actual_fiber
+#print axioms ThreeOmittedValues.SemanticCorrespondence.blaschke_terms_nonnegative
+#print axioms ThreeOmittedValues.SemanticCorrespondence.not_summable_iff_unbounded_finite_sums
+#print axioms ThreeOmittedValues.SemanticCorrespondence.bounded_type_definitions_agree
+#print axioms ThreeOmittedValues.SemanticCorrespondence.bounded_type_upper_agrees
+#print axioms ThreeOmittedValues.SemanticCorrespondence.bounded_type_lower_agrees
+#print axioms ThreeOmittedValues.SemanticCorrespondence.analytic_off_real_of_real_poles
+#print axioms ThreeOmittedValues.SemanticCorrespondence.source_form_with_semantic_bridges

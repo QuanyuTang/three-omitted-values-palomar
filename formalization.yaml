@@ -72,12 +72,15 @@ fidelity:
     analyticity, and poles are the non-analytic points. The positive divisor
     supplies finite-point multiplicities. The other sphere values are exactly
     the complex numbers distinct from zero and one. No additional mathematical
-    hypotheses are imposed.
+    hypotheses are imposed. SemanticCorrespondence.lean proves the finite and
+    infinite fibre identities, the multiplicity and summability correspondence,
+    and bounded-type equivalence on the pole-free half-planes. It also derives
+    a full source-form restatement from the original unconditional theorem.
 
 review:
   status: "self-assessed"
   reviewers: []
-  notes: "The statement and proof were checked in Lean and audited for axiom dependencies; no independent human review is claimed."
+  notes: "The statement and proof were checked in Lean and audited for axiom dependencies. External GPT feedback prompted explicit semantic bridge lemmas and clarified verification wording; no independent human review is claimed."
 
 alignment:
   namespace: "PalomarTheorem12"
