@@ -5,6 +5,11 @@
 [![Lean and kernel verification](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/workflows/verify.yml?query=branch%3Amain)
 [![Palomar full mechanical preflight](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/workflows/palomar-preflight.yml/badge.svg?branch=main)](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/workflows/palomar-preflight.yml?query=branch%3Amain)
 
+**Registered with Palomar:**
+[PALOMAR-2026-10-29-000014, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-29-000014&version=1),
+registered on October 29, 2026. The record fixes the source snapshot
+[`c408da985b3b0498f6f2df702739673865a8b932`](https://github.com/QuanyuTang/three-omitted-values-palomar/tree/c408da985b3b0498f6f2df702739673865a8b932).
+
 This repository formalizes Theorem 1.2 of [Three omitted values and
 non-Blaschke point divisors in half-planes](https://arxiv.org/abs/2608.26062v2).
 Codex produced the Lean formalization from the paper's original informal
@@ -16,7 +21,15 @@ every other value, the point divisor in each open half-plane fails the
 Blaschke condition, with multiplicities counted. The function is not of
 bounded type in either half-plane. The theorem is unconditional.
 
-**Historical verification evidence:**
+**Verification of the registered snapshot:** The
+[Palomar verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/40823219946)
+passed for the registered commit. The same snapshot also passed the
+[repository checks](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/runs/40818912274)
+and the [full mechanical preflight](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/runs/40818923518).
+Lean, NanoDa, and con-ron accepted the proof; the axiom audit of the main
+theorem and all 15 semantic correspondence theorems passed.
+
+**Earlier verification evidence:**
 [`1a6a4e27d5d6589a061dae64c44391e993cad5f8`](https://github.com/QuanyuTang/three-omitted-values-palomar/tree/1a6a4e27d5d6589a061dae64c44391e993cad5f8)
 passed both the [repository checks](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/runs/40799377846)
 and the [official full Palomar mechanical preflight](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/runs/40811878877).
@@ -25,9 +38,8 @@ has `status: pass`, with Lean, NanoDa, and con-ron accepting the proof. Its
 top-level `errors` and `warnings` lists are empty; the Lean build logs
 contain routine linter and deprecation warnings. This historical report
 predates the explicit semantic correspondence module added in the current
-sources. For submission, require both workflows to pass for the exact new
-40-character commit SHA; a badge or a report for another commit is insufficient.
-Mechanical preflight is separate from submission, editorial review, and registration.
+sources. It is retained as historical evidence; the Palomar record above
+identifies the registered version and its verification evidence.
 
 ## Statement and proof
 
@@ -98,7 +110,6 @@ See
 [`formalization.yaml`](formalization.yaml) for scope, source, automation, and
 review metadata and [`THIRD_PARTY.md`](THIRD_PARTY.md) for source attribution.
 
-This repository is preparation for a later submission. Palomar requires
-a public repository and a pushed immutable commit before its verification can
-begin; the submission process is described at the
-[Palomar submission page](https://palomar-registry.org/how-to-submit).
+The [Palomar version 1 record](https://palomar-registry.org/entry?id=PALOMAR-2026-10-29-000014&version=1)
+refers to the fixed source snapshot linked above. Later documentation updates
+on `main` do not change that registered snapshot.
