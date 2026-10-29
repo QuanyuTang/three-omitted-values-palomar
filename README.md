@@ -2,6 +2,9 @@
 
 **Authors: Quanyu Tang, Bokai Cui, Wei He, Tao Hu, Yanyang Li, Ke Wang, Zijun Yu.**
 
+[![Lean and kernel verification](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/workflows/verify.yml?query=branch%3Amain)
+[![Palomar full mechanical preflight](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/workflows/palomar-preflight.yml/badge.svg?branch=main)](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/workflows/palomar-preflight.yml?query=branch%3Amain)
+
 This repository formalizes Theorem 1.2 of [Three omitted values and
 non-Blaschke point divisors in half-planes](https://arxiv.org/abs/2608.26062v2).
 Codex produced the Lean formalization from the paper's original informal
@@ -12,6 +15,17 @@ zero, one, and pole fibres are all infinite and lie on the real axis. For
 every other value, the point divisor in each open half-plane fails the
 Blaschke condition, with multiplicities counted. The function is not of
 bounded type in either half-plane. The theorem is unconditional.
+
+**Verified proof snapshot:**
+[`1a6a4e27d5d6589a061dae64c44391e993cad5f8`](https://github.com/QuanyuTang/three-omitted-values-palomar/tree/1a6a4e27d5d6589a061dae64c44391e993cad5f8)
+passed both the [repository checks](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/runs/40799377846)
+and the [official full Palomar mechanical preflight](https://github.com/QuanyuTang/three-omitted-values-palomar/actions/runs/40811878877).
+The [recorded mechanical report](verification/mechanical-report-20261028.json)
+has `status: pass`, with Lean, NanoDa, and con-ron accepting the proof and no
+errors or warnings. Later workflow and documentation commits do not change
+that fixed proof snapshot. Badges show the latest workflow results; submit
+the exact checked commit. Mechanical preflight is separate from Palomar
+submission, editorial review, and registration.
 
 ## Statement and proof
 
