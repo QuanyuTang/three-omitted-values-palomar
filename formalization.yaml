@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Three omitted values and non-Blaschke point divisors in half-planes"
+  description: >-
+    An unconditional Lean formalization of Theorem 1.2 of arXiv:2608.26062v2:
+    a real meromorphic function has three infinite exceptional fibres on the
+    real axis, while every other point divisor fails the Blaschke condition
+    in each half-plane and the function is not of bounded type in either.
+  authors:
+    - "Quanyu Tang"
+    - "Bokai Cui"
+    - "Wei He"
+    - "Tao Hu"
+    - "Yanyang Li"
+    - "Ke Wang"
+    - "Zijun Yu"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Quanyu Tang"
+
+repository:
+  role: "substantive-development"
+
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30D35", "30H15", "30F35"]
+
+sources:
+  - title: "Three omitted values and non-Blaschke point divisors in half-planes"
+    authors:
+      - "Quanyu Tang"
+      - "Bokai Cui"
+      - "Wei He"
+      - "Tao Hu"
+      - "Yanyang Li"
+      - "Ke Wang"
+      - "Zijun Yu"
+    type: "paper"
+    id: "https://arxiv.org/abs/2608.26062v2"
+    location: "Theorem 1.2"
+    relationship: "formalizes"
+    note: "Codex formalized the paper's informal argument with adaptations described in the repository."
+
+status:
+  scope: >-
+    The advertised theorem includes all three infinite exceptional fibres,
+    both half-plane non-Blaschke divisor assertions with multiplicities,
+    and both non-bounded-type assertions. The proof has no extra hypotheses.
+    Challenge.lean has one deliberate statement placeholder; the solution
+    and its transitive proof sources have none.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "Codex developed the formal proof from the informal source, using local Lean compilation and axiom checks."
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local development machine"
+  notes: "Codex adapted the informal proof and checked the Lean development; prior-source credits appear in THIRD_PARTY.md."
+
+fidelity:
+  divergences: >-
+    Mathlib's meromorphic normal form is used: finite fibres require
+    analyticity, and poles are the non-analytic points. The positive divisor
+    supplies finite-point multiplicities. The other sphere values are exactly
+    the complex numbers distinct from zero and one. No additional mathematical
+    hypotheses are imposed.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The statement and proof were checked in Lean and audited for axiom dependencies; no independent human review is claimed."
+
+alignment:
+  namespace: "PalomarTheorem12"
+  statements:
+    - source: "arXiv:2608.26062v2, Theorem 1.2"
+      lean: "PalomarTheorem12.main_result"
+      module: "Challenge.lean and Solution.lean"
+      status: "proved"
+      note: "The comparator checks the theorem and its transitive statement definitions."
+
+acknowledgements: "Lean 4, Mathlib, Codex, and the prior developments credited in THIRD_PARTY.md."
